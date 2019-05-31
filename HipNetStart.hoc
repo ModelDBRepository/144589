@@ -1,0 +1,33 @@
+//J. Berzhanskaya 2D network model of CA1 start file//
+//lastet version Neuron 7.0 2012//
+//with code from
+//Cameron McIntyre//
+//CA1 neuron (3-D dendritic tree)//
+
+load_file("nrngui.hoc")
+load_file("interpxyz.hoc")	// only interpolates sections that have extracellular
+load_file("setpointers.hoc")	// automatically calls grindaway() in interpxyz.hoc
+
+
+
+net44=0
+net50=0
+
+
+
+
+proc netwOPb(){
+	if(net44 ==1){net50 =0
+load_file(1,"netwOPb.hoc")
+        
+	}
+
+}
+
+
+xpanel("Cell Geometry")
+	xstatebutton("netwOPb ", &net44, "netwOPb()")
+	xbutton("Quit                                                    ", "quit()")
+xpanel(360, 0)
+
+

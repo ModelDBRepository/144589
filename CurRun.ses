@@ -1,0 +1,35 @@
+
+
+xpanel("Internal Current Clamp")
+	xvalue("Int Stim Amp (nA)", "Istim", 1, "intstimulus()", 1)
+	xvalue("Int Stim PW (ms)", "intpw", 1, "intstimulus()", 1)
+// fixed at 50ms to allow electric field effects
+	xvalue("Int Stim Delay (ms)", "intdel", 1, "intstimulus()", 1)
+xpanel(0, 230)
+
+
+
+{
+xpanel("RunControl", 0)
+v_init = -65
+xvalue("Init","v_init", 1,"stdinit()", 1, 1 )
+xbutton("Init & Run","run()")
+xbutton("Stop","stoprun=1")
+runStopAt = 5
+xvalue("Continue til","runStopAt", 1,"{continuerun(runStopAt) stoprun=1}", 1, 1 )
+runStopIn = 150
+xvalue("Continue for","runStopIn", 1,"{continuerun(t + runStopIn) stoprun=1}", 1, 1 )
+xbutton("Single Step","steprun()")
+t = 0
+xvalue("t","t", 2 )
+tstop = tstop
+xvalue("Tstop","tstop", 1,"tstop_changed()", 0, 1 )
+dt = dt
+xvalue("dt","dt", 1,"setdt()", 0, 1 )
+steps_per_ms = 40
+xvalue("Points plotted/ms","steps_per_ms", 1,"setdt()", 0, 1 )
+xcheckbox("Quiet",&stdrun_quiet,"")
+realtime = 0
+xvalue("Real Time","realtime", 0,"", 0, 1 )
+xpanel(0, 400)
+}
